@@ -28,27 +28,30 @@ if (pinAnswer.pin === myPin) {
             },
         ]);
         myBalance -= amountAns.amount;
-        if (myBalance < amountAns.amount) {
-            console.log(`Insuficiant Balance`);
-        }
-        else if (operationAns.operation == "Fast Cash") {
-            let fastCash = await inquirer.prompt([{
-                    name: `amount`,
-                    message: `Please select the amount`,
-                    type: `list`,
-                    choices: [1000, 3000, 5000],
-                }]);
-            myBalance -= fastCash.amount;
+        if (amountAns.amount <= myBalance) {
             console.log(`Your remainig balance is ${myBalance}`);
         }
-        else if (operationAns.operation == "Check Balance") {
-            console.log(`Your balance is ${myBalance}`);
-        }
         else {
-            console.log("Wrong Option!! Please try again.");
+            console.log(`Ìnsuficiant Balance`);
         }
+        ;
     }
-}
-else {
-    console.log(`Incorrect pin code`);
+    else if (operationAns.operation == "Fast Cash") {
+        let fastCash = await inquirer.prompt([
+            {
+                name: `amount`,
+                message: `Please select the amount`,
+                type: `list`,
+                choices: [1000, 3000, 5000],
+            },
+        ]);
+        myBalance -= fastCash.amount;
+        console.log(`Your remainig balance is ${myBalance}`);
+    }
+    else if (operationAns.operation == "Check Balance") {
+        console.log(`Your balance is ${myBalance}`);
+    }
+    else {
+        console.log(`Incorrect pin code`);
+    }
 }

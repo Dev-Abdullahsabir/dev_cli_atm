@@ -1,6 +1,6 @@
 {
   "name": "dev_cli_atm",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "This a cli based atm",
   "main": "index.js",
   "type": "module",

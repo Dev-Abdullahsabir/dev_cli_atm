@@ -23,7 +23,7 @@ if (pinAnswer.pin === myPin) {
       choices: [`Withdraw`, `Fast Cash`, `Check Balance`],
     },
   ]);
-  if (operationAns.operation == "Withdraw") {
+  if (operationAns.operation === "Withdraw") {
     let amountAns = await inquirer.prompt([
       {
         name: `amount`,
@@ -31,11 +31,12 @@ if (pinAnswer.pin === myPin) {
         type: `number`,
       },
     ]);
-    myBalance -= amountAns.amount;
-    if (myBalance <= amountAns.amount) {
-      console.log(`Your remainig balance is ${myBalance}`);
-    }else{console.log(`Insuficiant Balance`)};
-    } else if (operationAns.operation == "Fast Cash") {
+    if (myBalance >= amountAns.amount) {
+      myBalance -= amountAns.amount;
+      console.log(`Your total balance is ${myBalance}`);
+    }else{
+      console.log(`Insufficient balance`)};
+    } else if (operationAns.operation === "Fast Cash") {
       let fastCash = await inquirer.prompt([
         {
           name: `amount`,
@@ -46,7 +47,7 @@ if (pinAnswer.pin === myPin) {
       ]);
       myBalance -= fastCash.amount;
       console.log(`Your remainig balance is ${myBalance}`);
-    } else if (operationAns.operation == "Check Balance") {
+    } else if (operationAns.operation === "Check Balance") {
       console.log(`Your balance is ${myBalance}`);
     }else {
   console.log(`Incorrect pin code`);

@@ -32,7 +32,7 @@ if (pinAnswer.pin === myPin) {
       },
     ]);
     myBalance -= amountAns.amount;
-    if (amountAns.amount <= myBalance) {
+    if (myBalance <= amountAns.amount) {
       console.log(`Your remainig balance is ${myBalance}`);
     }else{console.log(`Insuficiant Balance`)};
     } else if (operationAns.operation == "Fast Cash") {

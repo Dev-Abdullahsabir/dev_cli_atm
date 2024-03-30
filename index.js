@@ -28,7 +28,7 @@ if (pinAnswer.pin === myPin) {
             },
         ]);
         myBalance -= amountAns.amount;
-        if (amountAns.amount <= myBalance) {
+        if (myBalance <= amountAns.amount) {
             console.log(`Your remainig balance is ${myBalance}`);
         }
         else {
